@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Menu & Pricing | Korwryn’s Cookies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #fdf8f3;
+      --warm-white: #fffaf5;
+      --gold: #c9a227;
+      --deep-burgundy: #6b2d3c;
+      --soft-burgundy: #8b3a4a;
+      --charcoal: #2c2c2c;
+      --muted: #6b6560;
+      --light-gold: #f5e6c8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(253, 248, 243, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--deep-burgundy);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--charcoal);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .nav-cta {
+      background: var(--deep-burgundy);
+      color: white !important;
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+    }
+
+    .page-header {
+      padding: 9rem 2rem 3rem;
+      text-align: center;
+      background: linear-gradient(135deg, #fdf8f3 0%, #f5e6c8 100%);
+    }
+
+    .page-header h1 {
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      color: var(--deep-burgundy);
+      margin-bottom: 0.8rem;
+    }
+
+    .page-header p {
+      color: var(--muted);
+      font-size: 1.15rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    section { padding: 3rem 2rem; }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* Photo Gallery */
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .photo-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-card .caption {
+      padding: 1rem 1.2rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .menu-section {
+      margin-bottom: 3.5rem;
+    }
+
+    .menu-section h2 {
+      font-size: 1.9rem;
+      color: var(--deep-burgundy);
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--light-gold);
+    }
+
+    .menu-section .subtitle {
+      color: var(--muted);
+      margin-bottom: 1.8rem;
+      font-size: 1.05rem;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      gap: 1rem;
+    }
+
+    .menu-item:last-child { border-bottom: none; }
+
+    .item-info h4 {
+      font-size: 1.15rem;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+
+    .item-info p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .item-price {
+      font-weight: 600;
+      color: var(--deep-burgundy);
+      font-size: 1.1rem;
+      white-space: nowrap;
+    }
+
+    .menu-item-with-photo {
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      gap: 1.2rem;
+      align-items: center;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .menu-item-with-photo img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .cta-box {
+      background: var(--deep-burgundy);
+      color: white;
+      text-align: center;
+      padding: 3rem 2rem;
+      border-radius: 20px;
+      margin-top: 2rem;
+    }
+
+    .cta-box h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 500;
+      text-decoration: none;
+      background: white;
+      color: var(--deep-burgundy);
+      margin-top: 1rem;
+    }
+
+    footer {
+      background: var(--charcoal);
+      color: #ccc;
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: white;
+      margin-bottom: 0.8rem;
+    }
+
+    @media (max-width: 600px) {
+      .menu-item-with-photo {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .menu-item-with-photo img {
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="logo">Korwryn’s Cookies</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Full Menu</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Order Now</a></li>
+    </ul>
+  </nav>
+
+  <header class="page-header">
+    <h1>Full Menu & Pricing</h1>
+    <p>Real photos of our cookies • Small-batch • Made in Northeast Florida</p>
+  </header>
+
+  <section>
+    <div class="container">
+
+      <!-- Real Photos Section -->
+      <div class="photo-gallery">
+        <div class="photo-card">
+          <img src="images/sugar-cookie.jpg" alt="Classic Sugar Cookies">
+          <div class="caption">Classic Sugar Cookies</div>
+        </div>
+        <div class="photo-card">
+          <img src="images/oatmeal-cookie.jpg" alt="Oatmeal Raisin Cookies">
+          <div class="caption">Oatmeal Raisin with Cranberries</div>
+        </div>
+        <div class="photo-card">
+          <img src="images/chocolate-chip.jpg" alt="Chocolate Chip Cookies">
+          <div class="caption">Chocolate Chip Cookies</div>
+        </div>
+      </div>
+
+      <!-- Signature Cookies with Photos -->
+      <div class="menu-section">
+        <h2>Signature Cookies</h2>
+        <p class="subtitle">Thick, bakery-style cookies made in small batches</p>
+
+        <div class="menu-item-with-photo">
+          <img src="images/sugar-cookie.jpg" alt="Sugar Cookie">
+          <div class="item-info">
+            <h4>Classic Sugar Cookie</h4>
+            <p>Soft, lightly sweet, perfect for decorating or enjoying plain</p>
+          </div>
+          <div class="item-price">$4.25</div>
+        </div>
+
+        <div class="menu-item-with-photo">
+          <img src="images/oatmeal-cookie.jpg" alt="Oatmeal Cookie">
+          <div class="item-info">
+            <h4>Oatmeal Raisin / Cranberry</h4>
+            <p>Chewy oats with raisins or dried cranberries and a hint of cinnamon</p>
+          </div>
+          <div class="item-price">$4.50</div>
+        </div>
+
+        <div class="menu-item-with-photo">
+          <img src="images/chocolate-chip.jpg" alt="Chocolate Chip Cookie">
+          <div class="item-info">
+            <h4>Chocolate Chip</h4>
+            <p>Classic bakery-style with rich chocolate chips</p>
+          </div>
+          <div class="item-price">$4.50</div>
+        </div>
+      </div>
+
+      <!-- Rest of the menu stays the same -->
+      <div class="menu-section">
+        <h2>More Signature Flavors</h2>
+        <div class="menu-item">
+          <div class="item-info">
+            <h4>Sea Salt Brown Butter Chocolate Chip</h4>
+            <p>Brown butter, dark chocolate, flaky sea salt</p>
+          </div>
+          <div class="item-price">$4.75</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <h4>Florida Citrus Sugar</h4>
+            <p>Bright orange & lemon zest</p>
+          </div>
+          <div class="item-price">$4.25</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <h4>Brown Butter Bourbon Pecan</h4>
+            <p>Toasted pecans and bourbon vanilla</p>
+          </div>
+          <div class="item-price">$4.75</div>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <h2>Gift Boxes</h2>
+        <div class="menu-item">
+          <div class="item-info">
+            <h4>6-Cookie Gift Box</h4>
+            <p>Assorted signature cookies</p>
+          </div>
+          <div class="item-price">$32</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <h4>12-Cookie Gift Box</h4>
+            <p>Premium assortment with ribbon</p>
+          </div>
+          <div class="item-price">$58</div>
+        </div>
+      </div>
+
+      <div class="cta-box">
+        <h3>Ready to Order?</h3>
+        <p>Tell us what you’d like — we bake fresh for every order.</p>
+        <a href="index.html#contact" class="btn">Place an Order</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Korwryn’s Cookies</div>
+    <p>Gourmet holiday cookies from Northeast Florida</p>
+  </footer>
+</body>
+</html>
